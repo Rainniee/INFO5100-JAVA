@@ -1,0 +1,669 @@
+Scenarios 1: Hiking
+
+Identify objects and behaviors :
+
+    Driver (ReachNow Renter):
+        Data: Name, Phone, Email, DrivingLicense, SafetyCredit, Passport
+        Behavior: rentReachNow, payRentFee, addTheGas, checkTheGas, payGasFee, eatLunch, payLunchFee, buyTickets, bookAHotel, endReachNow
+
+    Vehicle :
+        Data: VehicleNumber, Type, Color, Place, AvailableTime,VehiclePrice,GasAmount
+        Behavior: 
+
+    ReachNowAPP :
+        Data: Vehicle[] vehicles, BankAccount
+        Behavior: search, compare, displayTheAvailable, placeTheOrder, cancleTheOrder,confirmTheRent
+     
+    Gas :
+        Data: GasNumber, GasPrice
+        Behavior: 
+
+    GasStation :
+        Data: StationName, Gas[] gas, GasAddMachine, BankAccount
+        Behavior: identify, placeTheGasPrice,confirmTheGasAdd
+     
+    GoogleMap:
+        Data: GasStation[] gasStations, Distance, Amount, TimeNeeded
+        Behavior: search, guide, showTheLocation, showTheRoute
+
+    YelpApp:
+        Data: Restaurnt[] restaurants, Comments, PriceRange, Location, Ranks
+        Behavior: search, sort, rank, displayTheBest, showTheChosenRestaurant
+
+    Restaurant:
+        Data: Name, Place, Table, Seat, Waiter, BankAccount
+        Behavior: serveTheCustomers, confirmTheLunch
+    
+	AirbnbApp:
+	    Data: Hotel[] hotels, Reviews, Location, PriceRange, Ranks
+		Behaviors: search, sort, rank, displayTheAvailable, showTheChosenHotel
+	
+	BuyTicketApp:
+	    Data: Park[] parks, Feelings, Location, TicketPrice, BankAccount
+		Behaviors: BuyTheTicketsOnline, ShowTheETicket, confirmTheTicketPaying
+	
+	Park:
+	    Data: Name, TicketPrice, Place
+		Behaviors: CheckTheConfirmation
+		
+	Hotel:
+        Data: Name, Place, Price, Service, BankAccount
+		Behaviors: showTheRoomType, supportBookingService, confirmTheCheckin
+		
+		
+    CreditCard :
+        Data: Number, Name, Expiry, SecurityCode
+        Behavior: 
+
+    CreditCardCompany :
+        Data: 
+        Behaviors: AuthorizeTransaction
+
+
+Sequence of invoking behaviors on Objects:
+
+1.1 Rent ReachNow On ReachNowApp:
+
+    Driver rainnie,
+    ReachNowAPP reachNow,
+    Vehicle bmw01,
+    CreditCard card,
+    CreditCardCompany visa,
+    RentConfirmation rentConfirmed
+
+    If ReahNowApp.isAvailable
+        rainnie.loginToReachNowApp --> reachNow, question: Vehicle[ ] vehicles
+        ReahNowApp.searchForVehicle --> color, type, number, place, availableTime,vehiclePrice,gasAmount
+        pageNumberOnReahNowApp = 1;
+            Loop
+                if rainne.findNoPagesOnReahNowApp
+                    break;
+                end
+                rainnie.findDesirableVehicleInAPage --> reachNow, question, pageNumberOnReahNowApp : vehicle
+                if vecle is not empty
+                    break;
+                else
+                    pageNumberOnReahNowApp = pageNumberOnReahNowApp + 1
+                end
+            End
+            bmw01 = vehicle
+            If bmw01 isAvalaible
+                rainnie.rentVehicle -> bmw01, creditcard, ReahNowApp: RentConfirmation
+                renConfirmed = RentConfirmation
+            Else
+                rainnie.cannotRentVehicle
+    Else
+        rainnie.searchForReachNowAppAfterAWhileBack
+ 
+1.2 Fill The Gas:
+
+        Gas gas1,
+        GoogleMap goolemap,
+        GasStation gasStationA,
+        GasAddConfirmation addConfirmed
+
+        If GoogleMap.isAvailable
+            rainnie.openTheGoogleMap --> googleMap, question : GasStation[ ] gasStations
+            GoogleMap.seachForGasStation --> location,  distance, amount, timeNeeded
+            GoogleMap.findTheNearestGasStation --> googleMap, question: GasStation
+            if vehicle.gasIsEnough
+                gasStationA = GasStation
+                rainne.driveTheVehicleToTheGasStation --> vehicle, googleMap, question : gasStation
+                rainne.searchForTheGas --> gasNumber, gasPrice
+                rainnie.findTheRightGas --> gasStation, question: gas
+                if gas != null
+                    gas1 = Gas
+                    rainnie.addTheGas --> gas1, gasAddMachine
+                    rainnie.checkTheGas --> gas1, creditCard, gasStationA: GasAddConfirmation
+                    addConfirmed = GasAddConfirmation
+                else
+                    rainnie.cannotAddTheGas
+            else
+                rainnie.cannotGetToTheNearsetGasStation
+        Else
+            rainnie.openTheGoogleMapAfterAWhileBack
+                             
+1.3 Eat At Restaurant For Lunch :
+
+    Restaurant restaurant1,
+    LunchConfirmation lunchConfirmed
+	
+	    If YelpApp.isAvalaible
+		    rainnie.openTheYelpApp --> YelpApp, question : Restaurant[] restaurants
+			YelpApp.searchForRestaurant --> rank, commets, location, priceRange
+			pageNumberOnYelpApp = 1;
+			    Loop
+				    if rainne.findNoPagesOnYelpApp
+                        break;
+					end
+					rainnie.findDesirableRestaurantInAPage --> YelpApp, question, pageNumberOnReahNowApp : restaurant
+					if restaurant is not empty
+			            break;
+					else
+					    pageNumberOnYelpApp = pageNumberOnYelpApp + 1
+			        end
+				End
+                restaurant1 = Restaurant
+                if restaurant1 isAvalaible
+                    rainnie.driveTheVehicleToThatRestaurant -> restaurant1, googleMap, vehicle
+					waiter.serveTheCustomersToEnjoyTheLunch --> restaurant1, creditCard: LunchConfirmation
+                    lunchConfirmed = LunchConfirmation
+                else
+                    rainnie.cannothaveLunchThereWithFriend
+					rainne.findAnotherRestaurantOnYelpApp
+        Else
+            rainnie.openTheYelpAppAfterAWhileBack
+
+1.4 Buy The Tickets To Get InTo The Park:
+    
+    Park olympicPark
+	PayingTicketConfirmation eTicket
+	
+	    If BuyTicketApp.isAvailable
+		    rainnie. openTheBuyTicketApp --> BuyTicketApp, question : Park[] parks
+			BuyTicketApp.searchForPark --> name, feelings, location, ticketPrice
+			pageNumberOnBuyTicketApp = 1;
+			    Loop
+				    if rainnie.findNoPagesOnBuyTicketApp
+					    break;
+					end
+					rainnie.findDesirableParkInAPage --> BuyTicketApp, question, pageNumberOnBuyTicketApp: park
+					if park is not empty
+					    break;
+				    else
+					    pageNumberOnBuyTicketApp = pageNumberOnBuyTicketApp + 1
+					end
+				End
+				olympicPark = Park
+				if olympicPark isAvailable
+				    rainnie.buyTicketsInThisPark --> olympicPark, BuyTicketApp, creditCard: PayingTicketConfirmation
+					eTicket = PayingTicketConfirmation
+					rainnie.driveTheVehicleToThatPark --> Vehicle, googleMap, park: CheckTheConfirmation
+				else
+				    rainnie. cannotBuyTicketsInThatPark
+					rainnie.findAnotherParkOnBuyTicketApp
+		Else
+            rainnie.openTheBuyTicketAppAfterAWhileBack		
+		
+1.5 Book A Hotel:
+
+    Hotel hotel1,
+	BookingOnLineConfirmation onlineConfirmed
+	CheckinConfirmation checkinConfirmed
+	
+	    If AirbnbApp.isAvailable
+		    rainnie.openTheAirbnbApp --> AirbnbApp, question : Hotel[] hotels
+			AirbnbApp.searchForHotel --> reviews, rank, location, priceRange
+			pageNumberOnAirbnbApp = 1;
+			    Loop
+				    if rainnie.findNoPagesOnAirbnbApp
+					    break;
+					else
+					    pageNumberOnAirbnbApp = pageNumberOnAirbnbApp + 1
+					end
+				End
+				hotel1 = Hotel
+				if hotel1 isAvailable
+				    rainnie.bookThisOne --> hotel1, AirbnbApp: BookingOnLineConfirmation
+					onlineConfirmed = BookingOnLineConfirmation
+					rainne.driveTheVehicleToThatHotel --> vehicle, googleMap hotel: CheckinConfirmation
+					checkinConfirmed = CheckinConfirmation
+				else
+				    rainnie.cannotBookThisHotel
+					rainnie.findAnotherHotelOnAirbnbApp
+		Else
+		    rainnie.openTheAirbnbAppAfterAWhileBack
+        
+        
+Scenarios 2: Organize a career fair
+
+Identify objects and behaviors :
+
+    Organizer:
+        Data: name, phone, email, age, position
+        Behaviors: scheduleTheDate, discussTheTime, selectTheLocation, writeTheCareerFairDescription, organizeTheCareerFair
+	
+	CareerFair:
+        Data: name, description, date, time, location
+        Behaviors: 
+		
+	Company:
+	    Data: companyName, companyAddress, companyPhone, companyEmail, companyRank, Department[] departments
+		Behaviors: offerThePlaceForCareerFair
+		
+	Department:
+	    Data: departmentName, departmentPhone
+		Behaviors: guideAround, offerHelp, keepTheOrder
+		
+	Interviewee:
+        Data: name, age, resume, major
+        Behaviors: applyForTheCareerFair, attendTheCareerFair, prepareForTheInterview, beingInterviewed
+	
+	Interviewer:
+        Data: name, age, position, phone, email
+        Behavior: showupInTheInterview, askQuestionWhenInterviewing, doSomeNote, discussThePerformance, giveTheMark
+	
+equence of invoking behaviors on Objects:
+
+2.1 Have a meeting with departmentHR and discussTheJobNeeded, date, time and location:
+
+    Organizer rainnie,	
+	CareerFair careerFair,
+	Company Amazon,
+	Department departmentHR,
+	Interviewee Johnson,
+	Interviewer siva
+	
+    rainnie.haveAMeeting --> rainnie, question: Department[] departments
+	departmentHR = departments
+	if departmentHR. isAvalaible
+	    rainnie.discussTheJobNeeded
+		if company needsTheDataAnlysist most
+		    rainnie.setTheCareerFairDescription as DataRelated
+		if company needsTheProgrammer most
+		    rainnie.setTheCareerFairDescription as ProgrammingRelated
+		if company needsTheConsultant most
+		    rainnie.setTheCareerFairDescription as ProjectManagerRelated
+	    if company needsTheUserDesigner most
+		    rainnie.setTheCareerFairDescription as UIRelated
+		else
+		    rainnie.setTheCareerFairDescription as AllTechnologyRelated
+		CareerFair.description = rainnie.set
+		rainnie.setTheCareerFairDate --> rainnie, departmentHR
+		CareerFair.date = rainnie.set
+		rainnie.setTheCareerFairLocation --> rainnie, departmentHR
+		CareerFair.location = rainnie.set
+	else
+	    rainnie.changeTheMeetingTime
+		
+2.2 Write a note online and receive interviewee email:
+
+    rainnie.writeCompanyDescription --> companyName, companyAddress, companyPhone, companyEmail, companyRank
+	rainnie.writeCareerFairDate --> CareerFair.date
+	rainnie.writeCareerFairTime --> CareerFair.time
+	rainnie.writeCareerFairLocation --> CareerFair.location
+	rainnie.writeCareerFairDescription --> CareerFair.description
+	rainnie.uploadNote --> note
+	departmentHR.receiveIntervieweeEmail --> interviewee
+	If interviewee.number != null
+	    interviewee.number = 0
+	    loop
+            if departmentHR.findNoQualifiedInterviewee
+                break;
+            end
+			if departmentHR.findQualifiedInterviewee
+			    departmentHR.sendAPassEmail --> email, interviewee
+			    interviewee.number = interviewee.number + 1
+			end
+		End
+	Else
+        departmentHR.checkTheEmailAfterAWhileBack
+
+2.3 Invite interviewers		
+		
+    rainnie.notifyTheInterviewer --> interviewee.number, interviewers
+    interviewer.number = 0
+	    loop
+            if rainnie.findNoProperInterviewer
+                break;
+            end
+			if rainnie.findProperInterviewer
+			    rainnie.sendAInvitation --> email, interviewer
+			    interviewer.number = interviewer.number + 1
+			end
+		End
+
+2.4 welcome interviewee	and interviewer, organize the careerFair:
+ 	
+    company.offerThePlaceForCareerFair --> company, careerFair, departmentStaff
+	department.guideAround --> departmentStaff, interviewee, interviewers
+	department.offerHelp --> departmentStaff, interviewee, interviewers
+	department.keepTheOrder --> departmentStaff, interviewee
+	interviewee.chooseNewNumber --> interviewee, newnumber
+	interviewee.newnumber = 1
+	loop
+	    if interviewee.newnumber != null
+		    break;
+		end
+		interviewee.beingInterviewed --> interviewee, interviewer
+		interviewer.doSomeReview --> interviewee, interviewer
+		interviewer.discussThePerformance --> interviewee, interviewer
+		interviewer.giveTheMark --> interviewee, interviewer
+		interviewer.newnumber = interviewer.newnumber + 1
+	End
+	    
+	
+Scenarios 3: Order Pizza from Pizza Hut:
+
+Identify objects and behaviors :
+
+    Order:
+        Data: Name, Phone, Email, Address, CreditCard
+        Behavior: searchTheMenu, selectThePizza, writeTheAddress, confirmTheOrder, cancleTheOrder, payForTheOrder
+	
+	PizzaHutOrderApp:
+	    Data: Pizza[] pizzas, PizzaHutBranch[] pizzaHutbranches, BankAccount
+        Behavior: showTheMenu, compareThePizza, displayTheAvailable, placeTheOrder, updateTheOrder, sendTheOrderToAPizzaHut, confirmTheOrder
+	
+	Pizza:
+	    Data: name, size, type, taste, seasoning, price
+        Behavior: 
+	
+    PizzaHutBranch:
+        Data: name, branchnumber, location, manager, cook, expressman
+        Behavior: receiveTheOrder, prepareThePizza, checkTheOrder, deliverTheOrder
+	
+	CreditCard :
+        Data: Number, Name, Expiry, SecurityCode
+        Behavior: 
+
+    CreditCardCompany :
+        Data: 
+        Behaviors: AuthorizeTransaction
+	
+Sequence of invoking behaviors on Objects:
+
+3.1 Check the menu and choose the type from PizzaHutOrderApp:
+
+    Order rainnie,
+	PizzaHutOrderAPP pizzaHutOrderAPP,
+    Pizza beefPizza,
+	PizzaHutBranch pizzahut001
+    CreditCard card,
+    CreditCardCompany visa,
+    OrderConfirmation orderConfirmedByOrder,
+	ReceiveOrderConfirmation orderConfirmedByPizzaHut
+
+    If PizzaHutOrderApp.isAvailable
+        rainnie.loginToThePizzaHutOrderApp --> pizzaHutOrderApp, question: Pizza[ ] pizzas, PizzaHutBranch[] pizzaHutBranches
+        PizzaHutOrderApp.showTheMenu --> type,taste,price,availableTime
+		if rainnie.chooseTheFeastPizza
+            pageNumberOnPizzaHutOrderApp = 1;
+            Loop
+                if rainne.findNoPagesOnPizzaHutOrderApp
+                    break;
+                end
+                rainnie.findDesirablePizzaInAPage --> PizzaHutOrderApp, question, pageNumberOnPizzaHutOrderApp : pizza
+                if pizza is available
+                    break;
+                else
+                    pageNumberOnPizzaHutOrderApp = pageNumberOnPizzaHutOrderApp + 1
+                end
+            End
+
+3.2 If choose DiyPizza:
+			
+		else
+		    //rainnie.chooseHerOwn
+			PizzaHutOrderApp.showTheTaste --> beef,chicken,BBQ
+            pageNumberOnPizzaHutOrderApp = 1;
+            Loop
+                if rainne.findNoPagesOnPizzaHutOrderApp
+                    break;
+                end
+                rainnie.findDesirabletasteAndSeasoningInAPage --> PizzaHutOrderApp, question, pageNumberOnPizzaHutOrderApp : pizza
+                if diyPizza is available
+                    break;
+                else
+                    pageNumberOnPizzaHutOrderApp = pageNumberOnPizzaHutOrderApp + 1
+                end
+            End	
+ 
+3.3 select how to take the Pizza and matching address and PizzaHutBranch:
+
+		beefpizza = pizza
+        if beefpizza.isAvalaible
+		    rainnie.writeTheAddress --> PizzaHutOrderApp, address
+		    PizzaHutOrderApp.seachForPizzaHutBranch --> location,distance,timeNee
+            PizzaHutOrderApp.findTheNearestPizzaHutBranch --> PizzaHutOrderApp, question: pizzaHutBranch
+            pizzaHut001 = PizzaHutBranch
+			rainnie.selectHowToTakeThePizza --> PizzaHutOrderApp, PizzaHutBranch: deliver, pickupBySelf
+			rainnie.orderThisPizza -> beefpizza, PizzaHutBranch, creditcard, PizzaHutOrderApp: orderConfirmation
+			pizzaHut001.receiveTheOrder --> beefpizza, PizzaHutBranch, creditcard, PizzaHutOrderApp: ReceiveOrderConfirmation
+            orderConfirmedByOrder = OrderConfirmation
+			orderConfirmedByPizzaHut = ReceiveOrderConfirmation
+        else
+            rainnie.cannotorderThisPizza
+    Else
+        rainnie.searchForPizzaHutOrderAppAfterAWhileBack
+		
+
+Scenarios 4: Design a code sharing platform (eg: Github)
+
+Identify objects and behaviors :
+
+    Designer:
+        Data: name, phone, email, company
+        Behaviors: designThePlatformHomePage, designTheUserHomePage, designTheCodingPage, implementTheShareFunction
+	
+	CodeSharingPlatform:
+        Data: name, URL, PlatformHomePage, UserHomePage, CodingPage
+        Behaviors: explore
+		
+	PlatformHomePage:
+	    Data: name, URL, color, target, layout
+        Behaviors: show, update,
+    
+	UserHomePage:
+	    Data: URL, user[] users, color, layout
+        Behaviors: show, update
+	
+	CodingPage:
+	    Data: URL, repository[] repositories, color, layout
+		Behaviors: show, update
+	
+    Layout:
+	    Data: module[] modules
+        Behaviors:	
+	
+	User:
+	    Data: name, loginName, loginPassword, photo, description, contribution, following，follower, repository, star, activity
+		Behaviors: writeTheCode, modifyTheCode, updateTheCode, saveTheRepository, searchOthersHomePage, toBeFollower, toBeFollowing, toBeNotified
+		
+    Repository:
+	    Data: time, number, code[] codes
+		Behaviors:
+	
+sequence of invoking behaviors on Objects:
+	
+4.1 Design the platform homepage:
+
+    Designer rainnie,	
+	CodeSharingPlatform codeSharingPlatform,
+	PlatformHomePage platformPage,
+	UserHomePage userHomePage,
+	Layout layout,
+	User user,
+	Repository repository
+	
+	rainnie.applyForAURLForTheCodeSharingPlatform --> codeSharingPlatform.URL
+	if codeSharingPlatform.URL isAvailable
+        rainnie.designThePlatformHomePage --> codeSharingPlatform.PlatformHomePage
+		rainnie.chooseTheName --> codeSharingPlatform.name
+		rainnie.chooseTheBackgroundColor --> codeSharingPlatform.color
+		rainnie.writeTheDescription --> codeSharingPlatform.target
+		rainnie.designTheLayout --> codeSharingPlatform.layout: module[] modules
+		    module1 = user.login
+			module2 = user.search
+			module3 = codeSharingPlatform.explore
+		user.clickTheModule2 --> user[] users, repository[] repositories
+		user.clickTheModule3 --> codeSharingPlatform
+	else
+	    rainnie.applyForAnotherURLForTheCodeSharingPlatform
+		
+4.2 Design the User HomePage:		
+	
+	rainnie.designTheUserHomePage --> UserHomePage.URL
+	user.login = UserHomePage.URL
+	if UserHomePage.URL isAvailable
+	    rainnie.chooseTheBackgroundColor --> userHomePage.color
+		rainnie.designTheLayout --> userHomePage.layout: module[] modules
+		    module4 = user.name
+			module5 = user.photo
+			module6 = user.description
+			module7 = user.contribution
+			module8 = user. following
+			module9 = user. follower
+			module10 = user.star
+			module11= user.repository
+		user.clickTheModule7 --> collection of activities
+		user.clickTheModule8 --> collection of followings
+		user.clickTheModule9 --> collection of followers
+		followers.updateTheCode --> followings.toBeNotified
+		user.clickTheModule11 --> collection of repositories	
+	else
+	    rainnie.checkTheURLForTheUserHomePage
+
+4.3 Design the coding page:
+
+    rainnie.designTheCodingPage --> codingPage.URL
+	user.writeTheCode = codingPage.URL
+	if codingPage.URL isAvailable
+	    rainnie.chooseTheBackgroundColor --> codingPage.color
+		rainnie.designTheLayout --> codingPage, layout: module[] modules
+		    module12 = createTheRepository
+			module13 = saveTheRepository
+			module14 = cancelTheRepository
+		user.clickTheModule12 --> repository
+		repository.number = 0
+		Loop
+		    if user.notSaveTheRepository
+                break;
+            end
+			else
+			    rainnie.modifyTheCode
+				rainnie.saveTheRepository --> Module13: codingPage, repository
+				codingPage.updateTheCode
+				userHomePage.update
+		        codeSharingPlatform.update
+		        codingPage.saveTheRepositoryNumber --> repository.number
+				repository.number = repository.number + 1
+				if thisUser.hasFollowings
+				    user.followings toBeNotified
+			    else
+			end
+		End
+	else
+	    rainnie.checkTheURLForTheCodingPage
+		
+		
+Scenarios 5: Design a soft-drink/snacks vending machine
+
+Identify objects and behaviors :
+
+    Designer:
+        Data: name, phone, address, ID, company
+        Behaviors: putTheItem, markTheNumber, initiateTheMachine, improveTheMachine, testTheMachine
+
+    VendingMachine:
+        Data: name, number, space, item, money
+        Behaviors:  saveTheItemNumber, showTheItem, giveTheItem, receiveTheMoney, giveTheChange, updateTheItem, recordTheMoney
+	
+	Item:
+        Data: number, drink[] drinks, snack[] snacks
+        Behaviors: 
+		
+	Drink:
+        Data: name, type, size, brand, price, number
+        Behaviors: 
+	
+	Snack:
+        Data: name, type, size, brand, price, number
+        Behaviors: 
+		
+	Customer:
+        Data: name, phone, creditcard, coin, papermoney
+        Behaviors: selectTheItem, confirmTheItem, chooseThePaymentMethod, giveTheMoney, receiveTheChange
+	
+	Coin:
+	    Data: value
+		Behaviors:
+		
+	PaperMoney:
+	    Data: value
+		Behaviors:
+	
+	CreditCard:
+	    Data : Number, name, company, expiry, security code
+		Behavior : 
+		
+	CreditCardCompany
+	    Data: 
+		Behavior : authorizeTransaction
+
+sequence of invoking behaviors on Objects:
+
+5.1 Put item and mark the number :
+
+    Designer rainnie,	
+	VendingMachine vendingmachine,
+	Item item,
+	Drink drink,
+	Snack snack,
+	Customer customer,
+	Coin coin,
+	PaperMoney papermoney,
+	CreditCard creditcard,
+	CreditCardCompany visa,
+	Confirmation paymentconfirmed,
+	ItemConfirmation receipt
+	
+	rainnie.putTheItem --> VendingMachine, Item : drink[]drinks, snack[] snacks
+	    Loop
+		    if vendingmachine.space isNotAvailable
+                break;
+            end
+			else
+			    rainnie.markTheNumber --> VendingMachine, Item : item.number
+			    vendingmachine.saveTheItemNumber --> Vendingmachine, Item : item.number
+			    item.number = item.number + 1
+			end
+		End
+	rainnie.initiateTheMachine --> VendingMachine, Item, Coin, PaperMoney
+	vendingmachine.recordTheMoney --> VendingMachine, Coin, PaperMoney
+
+5.2 customer select the item and choose how to pay:
+   
+    customer.selectTheItem --> item, vendingmachine
+	VendingMachine.showTheItem --> item.number
+	customer.confirmTheItem --> item.number, item.price
+	customer.chooseThePaymentMethod --> coin, papermoney, creditcard
+	vendingmachine.money = 0
+	if customer.selectTheCoin or customer.selectThePaperMoney
+	    if vendingmachine.isWork
+	        Loop
+		        if customer.giveTheInvalidPaperMoney or customer.giveTheInvalidCoin 
+			        vendingmachine.retriveThePaperMoney
+			        continue;
+			    if customer.giveTheLessPaperMoney or customer.giveTheLessCoin
+				    vendingmachine.receiveTheMoney
+				    vendingmachine.showTheDifference
+				    customer.giveTheAdditionalPaperMoney or customer.giveTheAdditionalCoin
+				    continue;
+			    if customer.giveTheMorePaperMoney or customer.giveTheMoreCoin
+			        vendingmachine.receiveTheMoneyv
+				    endingmachine.giveTheChange
+				    customer.receiveTheChange
+				    break;
+			    else
+			    //customer.giveTheRightPaperMoney or customer.giveTheRightCoin
+			        vendingmachine.receiveTheMoney
+			    end
+		    End
+		else
+		    rainnie.improveTheMachine	
+	else
+		//customer.	selectTheCreditCard
+        if vendingmachine.isWork
+	        if customer.creditCard isAvailable
+			    customer.payByCard --> vendingmachine, item, creditCard: confirmation
+				paymentconfirmed = confirmation
+			else
+			    customer.changeTheCard or customer.changeThePaymentMethod
+		else
+		    rainnie.improveTheMachine
+	vendingmachine.giveTheItem --> customer, vendingmachine, item
+	vendingmachine.updateTheItem --> vendingmachine, item
+	item.number --
+	vendingmachine.recordTheMoney --> vendingmachine, item.money
+	vendingmachine.money = vendingmachine.money + item.money
