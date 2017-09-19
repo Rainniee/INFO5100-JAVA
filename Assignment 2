@@ -1,0 +1,94 @@
+/**1. Write a java function to calculate the salary of an employee based on the following rules.
+    i. function takes input of number of hours an employee worked and returns the salary.
+    ii.  The first 36 hours worked are paid at a rate of 15.0,
+     then the next 5 hours are paid at a rate of 15 * 1.5.
+     Hours after that up to a max of 48 are paid at a rate of 15 * 2.**/
+
+Class Employee {
+    String name;
+	double hours;
+	
+	public Employee(String name, double hours, Gender gender) {
+	    this.name = name;
+		this.hours = hours;
+		this.gender = gender;
+	}
+	
+	public String getName() {
+	    return name;
+	}
+	
+	public void getHours() {
+	    return hours;
+	}
+	
+	
+Public double employeeSalary(double hours){
+    double emploeeSalary;
+	double basicSalary;
+	double overtimeSalary;
+	
+	if (employee.hours <= 36) {
+	    employeeSalary = employee.hours * 15;
+	}
+	else if ((employee.hours > 36) && (employee.hours <= 41)) { 
+		basicSalary = 36 * 15;
+		overtimeSalary = (employee.hours - 36) * 15 * 1.5;
+		employeeSalary = basicSalary + overtimeSalary;
+	}
+	
+	else {
+	    // (employee.hours > 41) && (employee.hours <= 48)
+		basicSalary = 36 * 15 + 5 * 15 * 1.5;
+		overtimeSalary = (employee.hours - 41) * 15 *2;
+		employeeSalary = basicSalary + overtimeSalary;
+	}
+	
+	System.out.println ("The salary of" + employee.name + "=" + employeeSalary);
+	return employeeSalary;
+}
+
+
+/**2. Write a java function that adds all the digits of an integer until it is single digit.
+    i. function takes an integer as input and returns its sum of digits.
+    ii. for example input = 37, sum = 3+7 = 10, sum = 1+0 = 1. result = 1.**/
+
+Public int addDigits (int input) {
+    int sum = 0;
+	while (input > 0) {
+	    sum += input % 10;
+		input = input /10;
+	}
+	sum = (sum < 10) ? sum : addDigits(sum);
+	System.out.println("sum = " + sum);
+	return sum;
+}
+
+
+/**3. Write a java function to print all perfect number between 1 and n.
+    i. Perfect number is a positive integer which is equal to the sum of its proper positive divisors.
+    ii. For example: 6 is the first perfect number, Proper divisors of 6 are 1, 2, 3.
+     Sum of its proper divisors = 1 + 2 + 3 = 6.**/
+
+public void printPerfectNumbers(int n) {
+    System.out.println("Enter the range n: ");
+	if (n <= 1) {
+	    System.out.println("\n There is no perfect number.")
+	}
+	else {
+	    System.out.println("\n The perfect numbers between 1 and" + n + " are: ")
+	    for (int i = 1; i < n; i++) {
+	        int sum = 0;
+		    { 
+		        for (int j = 1; j < i; j++) {
+			        if (i % j == 0) {
+				        sum+ = j;
+				    }
+			    }
+			    if (sum == i) {
+			        System.out.println(i);
+			    } 
+			}
+		}
+	}
+}	
