@@ -4,48 +4,47 @@
      then the next 5 hours are paid at a rate of 15 * 1.5.
      Hours after that up to a max of 48 are paid at a rate of 15 * 2.**/
 
-Class Employee {
-    String name;
-	double hours;
-	
-	public Employee(String name, double hours, Gender gender) {
-	    this.name = name;
-		this.hours = hours;
-		this.gender = gender;
-	}
-	
-	public String getName() {
-	    return name;
-	}
-	
-	public void getHours() {
-	    return hours;
-	}
-	
-	
-Public double employeeSalary(double hours){
-    double emploeeSalary;
+import java.util.Scanner;
+
+/**
+ *
+ * @author apple
+ */
+public class JavaApplication3 {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        System.out.println("Please enter employee's working hours: ");
+        int hours = in.nextInt();
+        employeeSalary(hours);   
+        // TODO code application logic here
+    }
+    
+    public static double employeeSalary(double hours){
+        double employeeSalary;
 	double basicSalary;
 	double overtimeSalary;
-	
-	if (employee.hours <= 36) {
-	    employeeSalary = employee.hours * 15;
+        
+        if (hours <= 36) {
+	    employeeSalary = hours * 15;
 	}
-	else if ((employee.hours > 36) && (employee.hours <= 41)) { 
+        else if ((hours > 36) && (hours <= 41)) { 
 		basicSalary = 36 * 15;
-		overtimeSalary = (employee.hours - 36) * 15 * 1.5;
+		overtimeSalary = (hours - 36) * 15 * 1.5;
 		employeeSalary = basicSalary + overtimeSalary;
 	}
-	
-	else {
-	    // (employee.hours > 41) && (employee.hours <= 48)
+        else {
+	    // (hours > 41) && (hours <= 48)
 		basicSalary = 36 * 15 + 5 * 15 * 1.5;
-		overtimeSalary = (employee.hours - 41) * 15 *2;
+		overtimeSalary = (hours - 41) * 15 *2;
 		employeeSalary = basicSalary + overtimeSalary;
 	}
-	
-	System.out.println ("The salary of" + employee.name + "=" + employeeSalary);
+        System.out.println ("The salary of this employee " + "= " + employeeSalary);
 	return employeeSalary;
+    }
 }
 
 
@@ -53,7 +52,6 @@ Public double employeeSalary(double hours){
     i. function takes an integer as input and returns its sum of digits.
     ii. for example input = 37, sum = 3+7 = 10, sum = 1+0 = 1. result = 1.**/
 
-package javaapplication1;
 import java.util.Scanner;
 /**
  *
@@ -91,7 +89,6 @@ public class JavaApplication1 {
     ii. For example: 6 is the first perfect number, Proper divisors of 6 are 1, 2, 3.
      Sum of its proper divisors = 1 + 2 + 3 = 6.**/
 
-package javaapplication2;
 import java.util.Scanner;
 
 /**
@@ -196,8 +193,6 @@ class Pizza{
 //I think to solve this problem, we'd better use a collection that acts like a property list, where we can give it a pizza name and the number associated with that pizza name. 
 //Since each element in a Map is actually 2 objects: a key and a value, so I choose HashMap to be the right data structure, to record the pizza name and number of each kind of pizza. 
 //Let pizza name be the key (which cannot duplicate), and let the number of each kind of pizza be the value(since we can have duplicate values).
-
-import java.util.*;
 
 public class Customer {
     String name;
