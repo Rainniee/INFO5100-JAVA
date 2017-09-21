@@ -53,15 +53,36 @@ Public double employeeSalary(double hours){
     i. function takes an integer as input and returns its sum of digits.
     ii. for example input = 37, sum = 3+7 = 10, sum = 1+0 = 1. result = 1.**/
 
-Public int addDigits (int input) {
-    int sum = 0;
-	while (input > 0) {
+package javaapplication1;
+import java.util.Scanner;
+/**
+ *
+ * @author apple
+ */
+public class JavaApplication1 {
+
+    /**23
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        System.out.println("Please input an integer:");
+        int input = in.nextInt();
+        addDigits(input);    
+// TODO code application logic here
+    }
+    
+    public static int addDigits (int input) {
+        int sum = 0;
+        while (input > 0) {
 	    sum += input % 10;
 		input = input /10;
 	}
 	sum = (sum < 10) ? sum : addDigits(sum);
 	System.out.println("sum = " + sum);
 	return sum;
+    }
+    
 }
 
 
