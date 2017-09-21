@@ -76,7 +76,7 @@ public class JavaApplication1 {
 	    sum += input % 10;
 		input = input /10;
 	}
-	sum = (sum < 10) ? sum : addDigits(sum);
+	//sum = (sum < 10) ? sum : addDigits(sum);
 	System.out.println("sum = " + sum);
 	return sum;
     }
