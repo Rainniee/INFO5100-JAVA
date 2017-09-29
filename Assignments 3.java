@@ -10,7 +10,124 @@ import java.util.Scanner;
  *
  * @author apple
  */
+
+//Question 1
+
+public class Book{
+    int size;
+    int price;
+    String name;
+    public Book(int size){
+    this.size = size;
+    }
+    
+    public Book(int size, int price, String name){
+        super();// Error 1: There is no father class for this book class.
+        this.size = size;
+        this.price = price;
+        this.name = name;
+    }
+
+    public Book(int price){ //Error 2: These two constructors have the same type(that took only an int), the class wouldn't compile. It's the variable type and order that matters.
+        this.price = price;  
+    }
+    
+    public setName(String name){ //Error 3: Maybe change to this sentence will be fine: public void setName(String aName)	  
+        return name; //Error 4: Maybe change to this sentence will be fine: name = aName;
+    }
+}
+
+
+//Question 2
+
+class Clock{
+    String time;
+    void getTime(){ // Error: the type is wrong, getter() method need a "return" sentence, so if it is "void", there should not have anything return. 
+        return time;
+    }
+    void setTime(String t){
+        time = t ;
+    }
+}
+
+
+//Question 3
+
+import java.util.Scanner;
+public class JavaApplication2 {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        System.out.println("Please enter a string: ");
+        String input = in.next();
+        removeVowelsFromString(input);    
+// TODO code application logic here
+    }
+    
+    public static String removeVowelsFromString(String input) {
+        String s1;
+        s1 = input.replace("a","");
+        String s2;
+        s2 = s1.replace("e", "");
+        String s3;
+        s3 = s2.replace("i", "");
+        String s4;
+        s4 = s3.replace("o", "");
+        String s5;
+        s5 = s4.replace("u", "");
+        System.out.println(s5);
+        return s5;
+    }
+}
+
+
+//Question4
+
+public class checkIfTwoStringsAreAnagrams {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        System.out.println("Please enter the first string: ");
+        String s1 = in.next();
+        System.out.println("Please enter the second string: ");
+        String s2 = in.next();
+		checkIfTwoStringsAreAnagrams c1 = new checkIfTwoStringsAreAnagrams();
+		System.out.println(c1.checkIfTwoStringsAreAnagrams(s1,s2));
+        // TODO code application logic here
+    }
+    
+    public static boolean checkIfTwoStringsAreAnagrams (String s1, String s2){
+        int n = -1;
+        if (s1.length() != s2.length()){
+            n++;
+        }
+        for (int i = 0; i < s1.length(); i++){
+            if (s2.contains(s1.substring(i)) == false){
+                n++;
+            }
+        }
+        if (n < 0){
+            reture true;
+        }
+        else{
+            reture false;
+    }
+}
+    
+
+//Question 5
+
 public class Calculator {
+    
+    /**
+     * @param args the command line arguments
+     */
 
     private double[] equation;
     private double value;
@@ -136,6 +253,5 @@ public class Calculator {
         Calculator c5 = new Calculator(101,"inch");
         Calculator c6 = new Calculator(7,9,34);
         // TODO code application logic here
-    }
-    
+    }  
 }
