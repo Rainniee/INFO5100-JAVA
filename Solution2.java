@@ -1,3 +1,7 @@
+/* good work
+ * score 9 + extra credit 3.5; Total score = 10
+ */
+
 /**1. Write a java function to calculate the salary of an employee based on the following rules.
     i. function takes input of number of hours an employee worked and returns the salary.
     ii.  The first 36 hours worked are paid at a rate of 15.0,
@@ -23,8 +27,8 @@ public class EmployeeSalary {
         employeeSalary(hours);   
         // TODO code application logic here
     }
-    
-     public static double employeeSalary(double hours){
+    // score 1.5
+     public static double employeeSalary(double hours){ // for hours after 48, you should return pay of 48 hrs.
         double employeeSalary;
 	double basicSalary;
 	double overtimeSalary;
@@ -65,14 +69,14 @@ public class AddDigits {
         int input = in.nextInt();
         addDigits(input); 
     }
-    
-    public static int addDigits (int input) {
+    // score 1.5
+    public static int addDigits (int input) { // for input 37, expected output is 1. your output is 10
         int sum = 0;
         while (input > 0) {
 	    sum += input % 10;
 		input = input /10;
 	}
-	//sum = (sum < 10) ? sum : addDigits(sum);
+	//sum = (sum < 10) ? sum : addDigits(sum); // uncomment this line
 	System.out.println("sum = " + sum);
 	return sum;
     }
@@ -97,7 +101,7 @@ public class PerfectNumber {
         printPerfectNumbers(n);    
 // TODO code application logic here
     }
-    
+    // score 2
     public static void printPerfectNumbers(int n) {
         if (n <= 1) {
 	    System.out.println("\n There is no perfect number.");
@@ -130,6 +134,7 @@ public class PerfectNumber {
  *
  * @author apple
  */
+// score 2 + extra credit 0.5
 public class Pizza {
     String pizzaType;
     double unitPrice;
@@ -138,7 +143,7 @@ public class Pizza {
     int orderNumber;
     double totalPrice;
     
-    Pizza(String type, int size, int number) {
+    Pizza(String type, int size, int number) { // do not include more logic in constructors
         pizzaType = type;
 	pizzaSize = size;
 	orderNumber = number;
@@ -195,6 +200,7 @@ import static sun.util.logging.LoggingSupport.isAvailable;
  *
  * @author apple
  */
+// score 2 + extra credit 1
 public class Customer {
     String name;
     HashMap <pizzaName, number> pizzas;
@@ -225,8 +231,8 @@ public class Customer {
 	System.out.println("Your total payment is: " + orderPayment);
 	return orderPayment;
     }
-
-    private static class number {
+// no point in using these inner classes
+    private static class number {  
 
         public number() {
         }
@@ -262,7 +268,7 @@ public class Triangle {
 	int n = in.nextInt();
 	printIsoscelesTriangle(n);    
     }
-    
+    // extra credit 2
     public static void printIsoscelesTriangle(int n){
         if (n < 1) {
 	    System.out.println("The input must be a positive integer, please enter another number: ");
