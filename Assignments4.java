@@ -1,4 +1,4 @@
-/*
+/* Question 1
  * Now you are given a string S, which represents a software license key which we would like to format. 
  * The string S is composed of alphanumerical characters and dashes. 
  * The dashes split the alphanumerical characters within the string into groups. (i.e. if there are M dashes, the string is split into M+1 groups). 
@@ -13,14 +13,14 @@
  * 2.After getting the newLength,I create an array and make it format.
  */
 
-package javaapplication2;
+package Assignments4;
 import java.util.Scanner;
 
 /**
  *
  * @author apple
  */
-public class JavaApplication2 {
+public class Assignments4 {
 
     /**
      * @param args the command line arguments
