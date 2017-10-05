@@ -315,4 +315,85 @@ class IpAddress {
    * method registerStudent (Student student): if the course is not full, register a student in course. (Score 2)
  */
 
+class Student {
+    private int id;
+    private String name;
+    public Student(){  
+    }
+    public Student(int id, String name){
+        this.id = id;
+        this.name = name;
+    }
+    public void setID (int id){
+        this.id = id;
+    }
+    public void  setName (String name){
+        this.name =  name;
+    }
+    public int getID(){
+       return id;
+    }
+    public String getName(){
+        return name;
+    }
+}
 
+class Course {
+    private String title;
+    private int numberOfStudent;
+    private int numMax =  10;
+    private Student[] students =new Student[numMax];
+    public Course(){
+    }
+    public Course(String title){
+        this.title = title;
+    }
+    public void setStudents(Student[] students){
+        this.students = students;
+    }
+    public Student[] getStudents(){
+        return students;
+    }
+    public boolean isFull(){
+        return this.numberOfStudent > numMax;
+    }
+    public void setTitle(String title){
+        this.title = title;
+    }
+    public String getTitle(){
+        return title;
+    }
+    public void setNumberOfStudent(int numberOfStudent){
+        this.numberOfStudent = numberOfStudent;
+    }
+    public int getNumberOfStudent(){
+        return numberOfStudent;
+    }
+    public void registerStudent(Student student) {
+        if (!isFull()){
+            for(int i = 0; i < numMax; i++){
+                if (null == students[i]){
+                    students[i] = student;
+                    numberOfStudent++;
+                    return;   
+                }
+            }
+        }
+        else{
+            System.out.println("Sorry! The number of registered is already the Max, please try another course!");
+        }
+    }
+	
+    public void registerListShow(){
+        System.out.println("Course.title: " + this.title + " " + "Number of the students registerd: "+ this.numberOfStudent);
+        System.out.println("The registered list is: ");
+        for (int i = 0; i < numMax;i++){
+            if(students[i] != null){
+                System.out.println("Student ID:  " + students[i].getID() + " " + "Student Name: " +students[i].getName());
+            }
+        }
+    }
+}
+	    
+	    
+	    
