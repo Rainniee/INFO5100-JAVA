@@ -258,7 +258,7 @@ class IpAddress {
     public int getOctet(int o){
         System.out.println("Please enter a number between 1-4 to get an octet: ");
         if (o == 1)
-            return getFirstOctet();
+             return getFirstOctet();
         else if(o == 2)
             return getSecondOctet();
         else if(o == 3)
@@ -268,7 +268,7 @@ class IpAddress {
         else
             System.out.println("Error:invalid number!");
         return -1;
-    }
+     }
     public void setFirstOctet(int firstOctet){
         this.firstOctet = firstOctet;
     }
@@ -295,5 +295,24 @@ class IpAddress {
         System.out.println(ip.getOctet(2));   
     }    
 }
+
+
+/* Question 4
+ * Design a simple registration system that allows Student to register in a course using 2 classes: class Student & class Course. 
+ * Implement the scenarios in class Test’s main method.
+ * Each student has a name and an id variables. 
+ * Each object of class Student is initialised using values of name and id passed to constructor. 
+ * Class Student has accessor methods for its instance variables
+ * Each Course has a name, and a variable numberOfStudent representing the number of registered students. 
+ * A course can have a maximum number of 10 students registered in it. 
+ * Class Course store the registered students in students which is an array of type Student. 
+ * When a student register in a course, he is added to the array. 
+ * Each object of class Course is initialised using the title. 
+ * Class Course has the following methods: 
+   * method getStudents(): return the array of registered students; 
+   * method boolean isFull(): return true if the course is full;
+   * accessor method for the title and numberOfStudent field;
+   * method registerStudent (Student student): if the course is not full, register a student in course. (Score 2)
+ */
 
 
