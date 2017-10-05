@@ -156,7 +156,8 @@ class Paper extends Tool {
         public boolean fight (Tool tool){
             if(tool.type == 'r'){
                 return this.strength * 2 > tool.strength;
-            }
+
+	    }
             else if(tool.type == 's'){
                 return this.strength > tool.strength * 2;
             }
@@ -218,5 +219,81 @@ class Rock extends Tool{
  * (Score 2)
  */
 
+/**
+ *
+ * @author apple
+ */
+class IpAddress {
+    private String dottedDecimal;
+    private int firstOctet;
+    private int secondOctet;
+    private int thirdOctet;
+    private int fourthOctet;
+    public IpAddress(){    
+    }
+    public IpAddress(String dd){
+        this.dottedDecimal = dd;
+        String[] str = dd.split("\\.");
+        this.firstOctet = Integer.parseInt(str[0]);
+        this.secondOctet = Integer.parseInt(str[1]);
+        this.thirdOctet = Integer.parseInt(str[2]);
+        this.fourthOctet = Integer.parseInt(str[3]);
+    }
+    
+    public String getDottedDecimal(){
+        return dottedDecimal;
+    }
+    public int getFirstOctet(){
+        return firstOctet;
+    }
+    public int getSecondOctet(){
+        return secondOctet;
+    }
+    public int getThirdOctet(){
+        return thirdOctet;
+    }
+    public int getFourthOctet(){
+        return fourthOctet;
+    }
+    public int getOctet(int o){
+        System.out.println("Please enter a number between 1-4 to get an octet: ");
+        if (o == 1)
+            return getFirstOctet();
+        else if(o == 2)
+            return getSecondOctet();
+        else if(o == 3)
+            return getThirdOctet();
+        else if(o == 4)
+            return getFourthOctet();
+        else
+            System.out.println("Error:invalid number!");
+        return -1;
+    }
+    public void setFirstOctet(int firstOctet){
+        this.firstOctet = firstOctet;
+    }
+    public void setSecondOctet(int secondOctet){
+        this.secondOctet = secondOctet;
+    }
+    public void setThirdOctet(int thirdOctet){
+        this.thirdOctet = thirdOctet;
+    }
+    public void setFourthOctet(int fourthOctet){
+        this.fourthOctet = fourthOctet;
+    }
+    public void setDottedDecimal(String dottedDecimal){
+        this.dottedDecimal = dottedDecimal;
+    }	
+   
+    public static void main(String[] args) {
+        // TODO code application logic here
+        IpAddress ip = new IpAddress("216.27.6.136");
+        System.out.println(ip.getDottedDecimal());
+        System.out.println(ip.getOctet(4));
+        System.out.println(ip.getOctet(1));
+        System.out.println(ip.getOctet(3));
+        System.out.println(ip.getOctet(2));   
+    }    
+}
 
 
