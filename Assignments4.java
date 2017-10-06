@@ -93,38 +93,48 @@ public class Assignments4 {
  *
  * @author apple
  */
-
-class Tool{
-    protected int strength;
-    protected char type;
-        
-    public Tool(){
-        
+class RockPaperSciddorGame{
+    public static void main(String args[]){
+	Scissors s = new Scissor(5);
+	Paper p = new Paper(7);
+	Rock r = new Rock(15);
+	    
+	System.out.println(s.fight(p) + " , " + p.fight(s));
+        System.out.println(p.fight(r) + " , " + r.fight(p));
+        System.out.println(r.fight(s) + " , " + s.fight(r));
     }
+    class Tool{
+        protected int strength;
+        protected char type;
+        
+        public Tool(){
+        
+        }
    
-    public Tool(int n){
-        this.strength = n;
-    }
-    public Tool(int n, char c){
-        this.strength = n;
-        this.type = c;
-    }
+        public Tool(int n){
+            this.strength = n;
+        }
+        public Tool(int n, char c){
+            this.strength = n;
+            this.type = c;
+       }
         
-    public void setStrength(int n){
-        this.strength = n;
-    }
-    public int getStrength(){
-        return this.strength;
-    }
-    public void setType(char c){
-        this.type = c;
-    }
-    public char getType(){
-        return this.type;
+        public void setStrength(int n){
+            this.strength = n;
+        }
+        public int getStrength(){
+            return this.strength;
+        }
+        public void setType(char c){
+            this.type = c;
+        }
+        public char getType(){
+            return this.type;
+        }
     }
 }
 
-class Scissors extends Tool {
+    class Scissors extends Tool {
         public Scissors(){
             this.type = 's';
         }
@@ -315,6 +325,10 @@ class IpAddress {
    * method registerStudent (Student student): if the course is not full, register a student in course. (Score 2)
  */
 
+/**
+ *
+ * @author apple
+ */
 class Student {
     private int id;
     private String name;
@@ -396,4 +410,99 @@ class Course {
 }
 	    
 	    
-	    
+/* Qustion 5
+ * Given an integer, convert it to a roman numeral.
+ * Input is guaranteed to be within the range from 1 to 3999.(Score 2) 
+ */	    
+
+/**
+ *
+ * @author apple
+ */
+public class intToRoman {
+    /**
+     * @param args the command line arguments
+     * @return 
+     */
+    public static String intToRoman(int num){
+            String digit[] = {"","Ⅰ","Ⅱ","Ⅲ","Ⅳ","Ⅴ","Ⅵ","Ⅶ","Ⅷ","Ⅸ"};
+            String ten[] = {"","X","XX","XXX","XL","L","L","LX","LXX","LXXX","XC"};
+            String hundred[] = {"","C","CC","CCC","CD","D","DC","DCC","DCCC","CM"};
+            String thousand[] = {"","M","MM","MMM"};
+            String roman = "";
+            return roman + thousand[num/1000] + hundred[num%1000/100] + ten[num%100/10] + digit[num%10];
+    }
+                      
+    public static void main(String[] args) {
+        // TODO code application logic here
+        System.out.println(intToRoman(1234));    
+    }   
+}
+
+
+/* Question Extra1
+ * There are two sorted arrays nums1 and nums2 ofsize m and n respectively.
+ * Find the median of the two sorted arrays. (Score 2)
+ *
+ * Example 1:
+ * nums1 = [1, 3] nums2 =[2] The median is 2.0
+ * Example 2:
+ * nums1 = [1, 2] nums2 =[3, 4] The median is (2+3)/2 = 2.5
+ */
+
+/* My thoughts：
+ * To find the median of the sorted arrays, this issue can be converted to finding Kth element.
+ * And K = (nums1.length + nums2.length) / 2
+ * The nums1 array: a0,a1,...ak/2-1,ak/2,...am-1, let the first k/2 elements be the Section1.
+ * The nums2 array: b0,b1,...bk/2-1,bk/2,...bn-1, let the first k/2 elements be the Section2.
+ * If ak/2-1 > bk/2-1, drop Section2 & Search (k-k/2)th in the rest.
+ * If ak/2-1 < bk/2-1, drop Section1 & Search (k-k/2)th in the rest.
+ */
+
+/**
+ *
+ * @author apple
+ */
+public class FindMedianSortedArrays {
+    /**
+     * @param args the command line arguments
+     * @return 
+     */	
+    public double findMedianSortedArrays(int[] nums1, int[] nums2){
+        int total = nums1.length + nums2.length;
+        if(total % 2 == 0){
+            return (findKth(total/2+1, nums1, nums2, 0, 0) + findKth(total/2, nums1, nums2, 0, 0))/2.0;
+        }
+        else{
+            return findKth(total/2+1, nums1, nums2, 0, 0);
+        }
+    }
+
+    public int findKth(int k, int[] nums1, int[] nums2, int s1, int s2){
+        if(k == 1)
+            return Math.min(nums1[s1], nums2[s2]);
+        else if(s1 >= nums1.length)
+            return nums2[s2+k-1];
+        else if(s2 >= nums2.length)
+            return nums1[s1+k-1];
+    
+        int n1 = s1+k/2-1;
+        int n2 = s2+k/2-1;
+        int mid1 = n1 < nums1.length ? nums1[n1] : Integer.MAX_VALUE;
+        int mid2 = n2 < nums2.length ? nums2[n2] : Integer.MAX_VALUE;
+        if(mid1 < mid2){
+            return findKth(k-k/2, nums1, nums2, n1+1, s2);
+        }
+        else{
+            return findKth(k-k/2, nums1, nums2, s1, n2+1);
+        }
+    }
+    
+    public static void main(String[] args) {
+        // TODO code application logic here
+        int[] nums1 = {1,3,5,7,9};
+	int[] nums2 = {2,4,6,8,10};
+	System.out.println(findMedianSortedArrays(nums1,nums2));    
+    }
+}
+	
