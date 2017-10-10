@@ -37,7 +37,7 @@ public class Hangman {
         }
         input.close();
 
-        System.out.println("-=+   W E L C O M E   T O   H A N G M A N   +=-");
+        System.out.println("***   W E L C O M E   T O   H A N G M A N   ***");
 
         playRound();
 
@@ -94,7 +94,7 @@ public class Hangman {
                 c = user.next().toLowerCase().charAt(0);
             }
 
-            System.out.println(" \n" + "-=+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+=-" + " \n");
+            System.out.println(" \n" + "***~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~***" + " \n");
 
             stage_tracker = stage;
             evaluateGuess(checkInput(c));
@@ -146,7 +146,7 @@ public class Hangman {
 	 	return false;
 	 }
 	 else{
-	 	System.out.println(" \n \n" + "Fat-finger error? Let's try this again:");
+	 	System.out.println(" \n \n" + "Error! Let's try this again:");
 	 	return playAgainPrompt();
 	 }
    }
