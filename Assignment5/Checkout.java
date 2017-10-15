@@ -66,7 +66,7 @@ public class Checkout {
         
         // calculate the taxes
         // format the spacing for the tax amount
-        // we subtract 3 because of the 3 letters in Tax
+        // Subtract 3 because of the 3 letters in Tax
         output += "Tax";
         double Ftax = DessertShoppe.cents2dollarsAndCents(totalTax());
         int widthTax = DessertShoppe.widthOfReceipt - 3;
@@ -74,10 +74,10 @@ public class Checkout {
         
         // calculate the total cost       
         // format the total
-        // Subtract 5 because of the 5 letters in total
+        // Subtract 10 because of the 10 letters in total cost
         output += "Total Cost";
         double Ftotal = DessertShoppe.cents2dollarsAndCents(Total);        
-        int widthTotal = DessertShoppe.widthOfReceipt - 5;
+        int widthTotal = DessertShoppe.widthOfReceipt - 10;
         output += String.format("%" + widthTotal + "s%n", Ftotal);
         return output;
     }
