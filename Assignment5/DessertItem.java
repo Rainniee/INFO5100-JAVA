@@ -25,4 +25,10 @@ public abstract class DessertItem {
     }
     
     public abstract int getCost();
+    
+    public double getTax(double price,double TaxRate){
+       double tax=Math.round(price*TaxRate);
+       return tax;
+    }
+    
 }
