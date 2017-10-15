@@ -45,19 +45,4 @@ public class Candy extends DessertItem{
         return pricePerPound;
     }
     
-    /**
-     public String toString(){
-        DessertShoppe candy = new DessertShoppe();
-        StringBuilder temp = new StringBuilder();
-        temp.append(getWeight() + " lbs. @ " + candy.cents2dollarAndCents(getPricePerPound()) + " /lb." + "\n");
-        temp.append(getName());
-
-        for (int j = getName().length(); j < candy.getPrintWidth() - String.valueOf(getCost()).length(); j++){
-            temp.append(" ");
-        }
-        temp.append(candy.cents2dollarAndCentsmethod(getCost()) + "\n");
-        return temp.toString();
-    }
-**/
-
 }
