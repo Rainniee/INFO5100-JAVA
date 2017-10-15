@@ -3,21 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package spiralorder2;
+package spiralorder;
 
 import java.util.LinkedList;
 import java.util.List;
 
 /**
  *
- * @author asus
+ * @author apple
  */
-public class SpiralOrder2 {
 
-    /**
-     * @param args the command line arguments
-     */
-public List<Integer> spiralOrder(int[][] matrix) {  
+public class SpiralOrder {
+
+    public List<Integer> spiralOrder(int[][] matrix) {  
         List<Integer> a = new LinkedList<>();  
         int rb = 0;
         int re = matrix.length - 1;
