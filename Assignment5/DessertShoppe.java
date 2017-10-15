@@ -36,8 +36,4 @@ public class DessertShoppe {
         return cents / (double)100;
     }
     
-    public static void main(String[] args) {
-        // TODO code application logic here
-    }
-    
 }
