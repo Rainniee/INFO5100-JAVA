@@ -5,7 +5,6 @@
  */
 package dessertshoppe;
 
-import java.text.DecimalFormat;
 import java.util.Vector;
 
 /**
