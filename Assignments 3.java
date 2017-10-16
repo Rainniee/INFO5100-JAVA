@@ -1,3 +1,6 @@
+/* Good Work
+ * Score 7.5 + extra credit 1; Total score 8.5
+ */
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -13,7 +16,7 @@ import java.util.Scanner;
 
 //Question 1
 
-public class Book{
+public class Book{ // score 1
     int size;
     int price;
     String name;
@@ -22,7 +25,7 @@ public class Book{
     }
     
     public Book(int size, int price, String name){
-        super();// Error 1: There is no father class for this book class.
+        super();// Error 1: There is no father class for this book class. // super can be used as it extends from Object class
         this.size = size;
         this.price = price;
         this.name = name;
@@ -40,7 +43,7 @@ public class Book{
 
 //Question 2
 
-class Clock{
+class Clock{ // score 1
     String time;
     void getTime(){ // Error: the type is wrong, getter() method need a "return" sentence, so if it is "void", there should not have anything return. 
         return time;
@@ -67,7 +70,7 @@ public class JavaApplication2 {
 // TODO code application logic here
     }
     
-    public static String removeVowelsFromString(String input) {
+    public static String removeVowelsFromString(String input) { // score 1.5, consider upper case also
         String s1;
         s1 = input.replace("a","");
         String s2;
@@ -102,28 +105,28 @@ public class checkIfTwoStringsAreAnagrams {
         // TODO code application logic here
     }
     
-    public static boolean checkIfTwoStringsAreAnagrams (String s1, String s2){
-        int n = -1;
+    public static boolean checkIfTwoStringsAreAnagrams (String s1, String s2){// score 0, for input "tale","late" the expected
+        int n = -1;		// output is true, you function returns false.
         if (s1.length() != s2.length()){
             n++;
         }
         for (int i = 0; i < s1.length(); i++){
-            if (s2.contains(s1.substring(i)) == false){
+            if (s2.contains(s1.substring(i)) == false){ // should work on this logic. 
                 n++;
             }
         }
         if (n < 0){
-            reture true;
+            reture true; // return signature is wrong
         }
         else{
-            reture false;
+            reture false; // return signature is wrong
     }
 }
     
 
 //Question 5
 
-public class Calculator {
+public class Calculator { // score 4 + extra credit 1
     
     /**
      * @param args the command line arguments
@@ -134,7 +137,7 @@ public class Calculator {
     public Calculator (){
         
     }
-    public Calculator(double firstnum, String s, double secondnum ){
+    public Calculator(double firstnum, String s, double secondnum ){ // don't put too much logic in constructor. define logic in methods and call in constructor
         Scanner input = new Scanner(System.in);
         String operation;
         System.out.println("Please enter your first number: ");  
@@ -213,7 +216,7 @@ public class Calculator {
         }
     }
     
-    public Calculator(double a, double b, double c){
+    public Calculator(double a, double b, double c){ // you have to return the values not print it. extra credit 1
         Scanner input = new Scanner(System.in);
         double value = 0;
         double[] equation = new double[2];
@@ -224,7 +227,7 @@ public class Calculator {
         System.out.println("Please enter your third number: ");  
         c = input.nextDouble();
         if (a != 0 && b != 0){
-            double k = Math.sqrt(b * b - 4 * a * c);
+            double k = Math.sqrt(b * b - 4 * a * c); // you have to check a case where delta < 0 and return null or empty array
             double k1 = (-b + k) / (2 * a);
             double k2 = (-b - k) / (2 * a);
             this.equation[0] = k1;
