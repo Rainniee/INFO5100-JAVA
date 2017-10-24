@@ -48,7 +48,7 @@ package class3;
     }
 }
 
-public class Class3{
+public class AppleStore{
     int x;
     public String y;
     public static void main(String args[]){
