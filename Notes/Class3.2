@@ -1,0 +1,22 @@
+class Student{
+    char[] name = new char[] {'s','i','v','a'};
+    
+    public boolean isHavingMiddleName(){
+        int space = 0;
+        for(char c: name){
+            if(c == ' ') 
+                space++;
+        }
+        if (space==2)
+            return true;
+        return false;
+    }
+}
+
+
+class String{
+    char ch[];
+    
+    public boolean isStartsWith(String string);
+    public String replace(String string, char c);
+}
