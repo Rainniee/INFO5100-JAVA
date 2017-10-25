@@ -3,12 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package class3;
+package class4;
 
-/**
- *
- * @author apple
- */
 public class Strawberry extends Fruit{
     
     public float getDiscount(){
@@ -24,7 +20,4 @@ public class Strawberry extends Fruit{
         return 0;
     }
 }
-    
-    
-    
     
