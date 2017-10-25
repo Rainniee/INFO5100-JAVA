@@ -12,7 +12,7 @@ Encapsulation
     -- 创建setters方法：强迫所有人都要调用setter 以防止他人可通过圆点运算符来存取实例变量
     -- 基本原则：将实例变量标记为private 并提供public的getter和setter来控制存取动作 
 
-Example
+
 class GoodDog{
     private int size;
     
