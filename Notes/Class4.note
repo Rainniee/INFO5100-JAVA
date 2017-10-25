@@ -32,3 +32,22 @@ class GoodDogTestDrive(){
         System.out.println("Dog Maoxian -> " + Maoxian.getSize());
     }
 }
+
+
+
+Inheritance
+    - Use extends keyword for inheriting from another class
+	- Data, behaviors and associations are inherited into child classes
+	- Parent class constructor will be invoked before invoking the child class constructor
+	- Behavior of parent class can be invoked by super.xxx() in the child class
+	-- child class will have an option to invoke one of the parent class constructor using super(xxx)
+	-- child class can't see private data or behaviors of the parent class
+	-- child class can access protected scoped data and behaviors
+	-- child classes can add more data and/or behaviors
+    -- child classes can override the behaviors of parent classes
+
+继承
+    -- 设计步骤： 设计代表共同状态与行为的类 -> 决定子类是否需要让某项方法由不同的方式实现 -> 寻找更多抽象化的机会 -> 完成类的继承层次
+    -- public类型的成员可以被继承，private类型的成员不可被继承
+    -- 继承下来的方法可以被覆盖，但实例变量不可被覆盖
+    -- 如果类Y extends 类X，且类Y是类Z的父类，则类Z能够通过IS-A X的测试
