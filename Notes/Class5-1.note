@@ -1,0 +1,84 @@
+Polymorphism
+    - Method Overloading: happens in the same class
+        -- Methods have a same name but different input parameters and same return types
+    - Method Overriding: happens in the child classes
+    
+<< Base class reference can point to child class object >>
+
+多态
+  - 运用多态时，引用类型可以是实际对象类型的父类
+  - 运用多态时，参数和返回类型也可以是多态
+    class Vet {
+        public void giveShot(Animal a) {
+            a.makeNoise(); //参数a可以为任意Animal类型的对象传入，
+        }
+    }
+    
+    class petOwner {
+        public void start(){
+            Vet v = new Vet();
+            Dog g = new Dog();
+            Hippo h = new Hippo();
+            v.giveShot(g);
+            v.giveShot(h);
+        }
+    }
+    
+  - 以下三种情况可以防止某个类被作出子类：
+    -- 1. 存取控制：非public的类只能被同一个包的类作出子类
+    -- 2. 使用final修饰符：它是继承树的末端，不能被继承
+    -- 3. 让类只拥有private的constructor
+  
+  - 覆盖的规则：
+    -- 1. 方法是合约的标志
+    -- 2. 参数必须一样，且返回类型必须兼容
+    -- 3. 存取权必须相同或者更开放（private -> public √ public -> private ×）
+  
+重载Overload
+  - 两个方法的名称相同，但参数不同，因此重载可以有同一方法的多个不同参数的版本以方便调用
+  - 返回类型可以不同，但不能只改变返回类型（需要不同的参数）
+  - 可以任意更改存取权限
+
+----------------------------------------------------------------------------------------------------------------------------------------
+Abstract classes
+    - Base class whose objects cannot be created
+    - They are marked as abstract
+    - They can have abstract methods
+  
+  << When you have a class and you believe that you cannot create the object of this class - make it abstract >>
+  
+抽象类
+  - 防止类被初始化（即不能被“new”出来），不能创建该类的实例
+  - 抽象的类代表此类必须被extend过，抽象的方法代表此方法一定要被覆盖过
+   -- 抽象的方法没有实体，只是为标记多态而存在
+      public abstract void eat(); //没有方法体，直接以;结束
+   -- 如果声明一个抽象的方法，则必须将该类标记为抽象类
+   -- 意义：定义出一组子型共同的协议，好处就是多态（所有子型都会有那些抽象的方法）
+   -- 在继承树下的第一个具体类必须要实现出所有的抽象方法（必须以相同的方法名称与参数、相容的返回类型创建出非抽象的方法）
+   
+----------------------------------------------------------------------------------------------------------------------------------------
+Interfaces
+
+    - Interface is a special type of an abstract class that has only definitions of behaviors and no implementation.
+    - It is considered as a contract of an object
+    - Interface is a keyword that can be used instead of class when defining it
+      -- A class can implement multiple interfaces using implements keyword
+      -- A class should write code for all the methods defined in the interface 
+    - An interface reference can point to an object that is implementing this interface
+    
+接口
+  - 使用interface，可以解决Java不支持“多重继承”的问题，解决方法：把所有方法设为abstract（即所有接口的方法都是抽象类）
+  - 接口的定义：
+    public interface pet {
+      public abstract void play();
+    }
+  - 接口的实现：
+    public class Dog extends Canine implements Pet { //实现implement时要在某个类的继承之下
+      public void play() { ... }
+  - 不同继承树的类也可以实现相同的接口
+  - 类可以实现多个接口
+    public class Dog extends Animal implements Pet, Saveable { ... }
+
+super关键词
+  - 要从子类调用父类的方法，用super关键词来引用
+  
