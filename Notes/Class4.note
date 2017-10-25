@@ -1,0 +1,34 @@
+Encapsulation
+    - private: protected from outside world
+    - public: accessible from outside world
+    
+    - All the data / attributes should be private
+    - Data should be accessed by getters(accessors) and setters(mutators)
+        -- public <return_type> getXXX()
+        -- public void setXXX(<return_typ> rt)
+    -Behaviors can be public only if they are accessible
+    
+封装
+    -- 创建setters方法：强迫所有人都要调用setter 以防止他人可通过圆点运算符来存取实例变量
+    -- 基本原则：将实例变量标记为private 并提供public的getter和setter来控制存取动作 
+
+Example
+class GoodDog{
+    private int size;
+    
+    public int getSize(){
+        return size;
+    }
+    
+    public void setSize(int s){
+        this.size = s;
+    }
+}
+    
+class GoodDogTestDrive(){
+    public static void main(String[] args){
+        GoodDog Maoxian = new goodDog();
+        Maoxian.setSize(45);
+        System.out.println("Dog Maoxian -> " + Maoxian.getSize());
+    }
+}
