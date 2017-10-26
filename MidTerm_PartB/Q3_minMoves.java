@@ -1,16 +1,20 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+/**
+ * Q3
+ * Given a non-empty integer array of size n
+ * find the minimum number of moves required to make all array elements equal
+ * where a move is incrementing n - 1 elements by 1
+ * Example:
+ * Input: [1,2,3]
+ * Output: 3
+ **/
+ 
 package midtermpartb;
-
-import java.util.Arrays;
 
 /**
  *
- * @author Administrator
+ * @author Apple
  */
+
 public class minMoves {
     
     public int minMoves(int[] nums) {
