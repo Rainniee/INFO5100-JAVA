@@ -1,3 +1,4 @@
+// score 4
 /**
  * Q4
  * Given n dice each with m faces, numbered from 1 to m
