@@ -1,3 +1,4 @@
+// score 4
 /**
  * Q2
  * You have a total of n coins that you want to form in a staircase shape, where every k-th row must have exactly k coins
@@ -26,8 +27,9 @@ package midtermpartb;
  *
  * @author Apple
  */
-
-public class arrangeCoins {
+/* for input = 5, expected output = 2, your output = 1
+*/
+public class arrangeCoins { 
     public int arrangeCoins(int n){
         int i =1;
         while(n > i){
