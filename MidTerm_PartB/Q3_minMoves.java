@@ -1,3 +1,4 @@
+// score 7
 /**
  * Q3
  * Given a non-empty integer array of size n
