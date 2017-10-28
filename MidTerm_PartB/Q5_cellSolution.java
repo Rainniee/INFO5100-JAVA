@@ -1,3 +1,4 @@
+//extra credit 10
 /**
  * Q5
  * A Maze is given as N*N binary matrix of blocks where source block is the upper left most block 
@@ -34,7 +35,7 @@ public class cellSolution {
         return x >= 0 && y >= 0 && x < maze.length && y < maze[0].length;
     }
     
-    public boolean findUniquePath(int[][]maze,ArrayList<Cell> findPath){
+    public boolean findUniquePath(int[][]maze,ArrayList<Cell> findPath){ // your function works but follow the method signature
         int col = maze[0].length; //get the collum length of maze
         int row = maze.length; //get the row length of maze
         
