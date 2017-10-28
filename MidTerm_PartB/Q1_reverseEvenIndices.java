@@ -1,3 +1,4 @@
+// score 6
 /**
  * Q1
  * Write a method named reverseEvenIndices that takes an integer array asinput and outputs an array 
