@@ -14,6 +14,10 @@ package midtermpartb;
  */
 
 public class countNumberOfPossibleWays {
+    /* for input 6,2,10
+        expected output = 3
+        your function breaks with StackOverflowError
+    */
     
     public static int countNumberOfPossibleWays(int m, int n, int x) {
         if (n<1 && m<4) return 0;  
