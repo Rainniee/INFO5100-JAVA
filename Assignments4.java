@@ -1,3 +1,6 @@
+/* Good Work
+ * Score 10+ extra credit 2; Total score 10
+ */
 /* Question 1
  * Now you are given a string S, which represents a software license key which we would like to format. 
  * The string S is composed of alphanumerical characters and dashes. 
@@ -35,7 +38,7 @@ public class Assignments4 {
 // TODO code application logic here
     }
     
-    public static String licenseKeyFormatting(String S, int K) {
+    public static String licenseKeyFormatting(String S, int K) { // score 2
         int len = 0;
         int n = 'a' - 'A';
         char[] tempArray = S.toCharArray(); //converts String S to a new character String.
@@ -93,7 +96,7 @@ public class Assignments4 {
  *
  * @author apple
  */
-class RockPaperSciddorGame{
+class RockPaperSciddorGame{ // score 2
     public static void main(String args[]){
 	Scissors s = new Scissor(5);
 	Paper p = new Paper(7);
@@ -233,7 +236,7 @@ class Rock extends Tool{
  *
  * @author apple
  */
-class IpAddress {
+class IpAddress { // score 2
     private String dottedDecimal;
     private int firstOctet;
     private int secondOctet;
@@ -383,9 +386,9 @@ class Course {
     public int getNumberOfStudent(){
         return numberOfStudent;
     }
-    public void registerStudent(Student student) {
+    public void registerStudent(Student student) { // you have to check if a student is already registered in the course and then register
         if (!isFull()){
-            for(int i = 0; i < numMax; i++){
+            for(int i = 0; i < numMax; i++){ // you can just add student at numberOfStudent index
                 if (null == students[i]){
                     students[i] = student;
                     numberOfStudent++;
@@ -419,7 +422,7 @@ class Course {
  *
  * @author apple
  */
-public class intToRoman {
+public class intToRoman { // score 2
     /**
      * @param args the command line arguments
      * @return 
@@ -463,7 +466,7 @@ public class intToRoman {
  *
  * @author apple
  */
-public class FindMedianSortedArrays {
+public class FindMedianSortedArrays { // extra credit 2
     /**
      * @param args the command line arguments
      * @return 
