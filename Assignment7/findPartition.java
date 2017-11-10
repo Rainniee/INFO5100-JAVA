@@ -4,6 +4,11 @@
 
 package assingnment7;
 
+/**
+ *
+ * @author apple
+ */
+
 import java.util.ArrayList;
 import java.util.HashSet;
 
