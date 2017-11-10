@@ -1,8 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+/**
+ * Determine whether a given array can be partitioned into two subsets such that the sum of elements in both subsets is same.
+ **/
+
 package assingnment7;
 
 import java.util.ArrayList;
