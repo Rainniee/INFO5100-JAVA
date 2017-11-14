@@ -14,6 +14,7 @@ import java.util.Vector;
 public class Checkout {
     private DessertShoppe DessertShoppe = new DessertShoppe();
     private Vector DessertItemList = new Vector(); // Use a Vector to store the DessertItem's.
+    // the vector should be of type DessertItem you are creating a normal vector here
     
     public Checkout(){
     }
@@ -44,6 +45,7 @@ public class Checkout {
     
     public String toString()
     {
+        // the out is not formated according to the question
         // create the receipt header
         int Total = totalCost() + totalTax();
         String output = "";
