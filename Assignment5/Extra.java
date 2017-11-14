@@ -13,8 +13,15 @@ import java.util.List;
  * @author apple
  */
 
-public class SpiralOrder {
+public class SpiralOrder { // extra credit 1
 
+    /* for input = {{1,2,3},
+                    {5,6,7},
+                    {9,10,11},
+                    {13,14,15}};
+        expected output = 1, 2, 3, 7, 11, 15, 14, 13, 9, 5, 6, 10
+        your output = 13, 14, 15, 7, 11, 15, 14, 13, 9, 5
+     */
     public List<Integer> spiralOrder(int[][] matrix) {  
         List<Integer> a = new LinkedList<>();  
         int rb = 0;
