@@ -1,0 +1,36 @@
+GUI >> Graphical User Interface
+
+GUI Procedure:
+1. Create a Container
+2. Create Components
+3. Set a layout to the Container
+4. Add Components to Container
+5. Create Listeners
+6. Attach the Listeners to Components
+7. Make the Container visible
+
+Notes:
+1. ActionListener is an interface which you implement when you click the button, so we need to connect the Listener to the button
+2. ActionPerformed() is called now when an action(click) happens
+3. Contanier & Components are both Class
+
+ActionListener >>
+An action event occurs, whenever an action is performed by the user(eg.clicks a button, chooses a menu item, presses Enter in a text field)
+The result is that an actionPerformed message is sent to all action listeners that are registered on the relevant component.
+
+ActionListener Procedure:
+follow the steps given below:
+1. eclare an event handler class and specify that the class either implements an ActionListener interface or extends a class 
+    that implements an ActionListener interface. 
+For example: 
+    public class MyClass implements ActionListener { 
+2. Register an instance of the event handler class as a listener on one or more components. 
+For example: 
+    someComponent.addActionListener(instanceOfMyClass);
+3. Include code that implements the methods in listener interface. 
+For example: 
+    public void actionPerformed(ActionEvent e) { 
+        ...//code that reacts to the action... 
+    }
+
+
