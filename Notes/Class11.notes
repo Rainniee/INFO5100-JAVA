@@ -14,6 +14,7 @@ Notes:
 2. ActionPerformed() is called now when an action(click) happens
 3. Contanier & Components are both Class
 
+
 ActionListener >>
 An action event occurs, whenever an action is performed by the user(eg.clicks a button, chooses a menu item, presses Enter in a text field)
 The result is that an actionPerformed message is sent to all action listeners that are registered on the relevant component.
@@ -34,3 +35,17 @@ For example:
     }
 
 
+MVP Architecture >>
+
+             ——————————————>  Model  <——————————————
+            |                                       |
+         Controller <————————————————————————————> View
+ 
+         View ----------- Send Request ------------> Controller
+      Controller ----------- Renders -----------------> View
+         View -------------- Display -----------------> Model
+      Controller --------- Manipulate ----------------> Model
+          
+          
+          
+          
