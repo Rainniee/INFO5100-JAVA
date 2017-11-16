@@ -7,7 +7,7 @@ package assignment8;
 
 /**
  *
- * @author Apple
+ * @author apple
  */
 
 import java.io.FileReader;
