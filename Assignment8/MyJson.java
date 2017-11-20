@@ -64,8 +64,6 @@ public class MyJson {
         ArrayList<Vehicle> vehicles = readAndGetVehicles(file);
         String s = getJsonString(vehicles);
         writeToFile(s, file.getParent());
-        file = new File("camino_output.txt");
-        // writeTextFromJson(file);
     }
     
 }
