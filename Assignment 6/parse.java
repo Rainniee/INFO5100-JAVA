@@ -13,7 +13,7 @@ import java.io.RandomAccessFile;
  * @author apple
  */
 
-public class parse{
+public class parse{ // score 1
     public static void parse(File file) throws FileNotFoundException, IOException {
         RandomAccessFile input = null;
         String line = null;
