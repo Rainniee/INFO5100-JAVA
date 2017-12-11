@@ -19,7 +19,7 @@ import java.util.Random;
  *
  * @author apple
  */
-public class MyIndexOutOfBoundException extends RuntimeException{
+public class MyIndexOutOfBoundException extends RuntimeException{ // score 2
 
     /**
      * @param args the command line arguments
