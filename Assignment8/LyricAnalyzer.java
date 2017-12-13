@@ -18,7 +18,7 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
-public class LyricAnalyzer {
+public class LyricAnalyzer { // score 4
     public LyricAnalyzer() {
 	super();
 	map = new HashMap<String, ArrayList<Integer>>();
