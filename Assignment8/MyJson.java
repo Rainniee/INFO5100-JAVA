@@ -1,3 +1,6 @@
+/* GOod work
+ * Total score 10
+ */
 // Q3
 
 package assignment8;
