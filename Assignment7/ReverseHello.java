@@ -8,7 +8,7 @@ package assignment7;
  *
  * @author apple
  */
-public class ReverseHello extends Thread {
+public class ReverseHello extends Thread { // score 2
     static final int MAX_THREADS = 50; // Maximum number of threads
     static final int FIRST_THREAD = 1; // First thread index
     private int counter; //Thread counter
