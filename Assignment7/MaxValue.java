@@ -12,7 +12,7 @@ package assignment7;
 
 import java.util.Random;
 
-class maxValueThread extends Thread {
+class maxValueThread extends Thread { // score 2
     int num;
     int[] array;
     int maxValue;
