@@ -17,7 +17,7 @@ package assignment7;
 
 public class PascalTriangle {
     
-    public static void printPascalTriangle(int n) {
+    public static void printPascalTriangle(int n) { // use long, for input 100, int overflows; Score 1.5
 	int[][] nums = new int[n][n];
 	for (int i = 0; i < n; i++){
             for (int j = 0; j <= i; j++){
