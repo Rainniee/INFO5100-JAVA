@@ -1,3 +1,6 @@
+/* Good Work
+ * socre 10 + extra credit 2; Total score 10
+ */
 /**
  * Determine whether a given array can be partitioned into two subsets such that the sum of elements in both subsets is same.
  **/
